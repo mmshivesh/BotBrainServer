@@ -15,7 +15,7 @@ with open("json/database.json") as data_file:
 @app.route('/')
 def homepage():
     the_time = datetime.now().strftime("%A, %d %b %Y %l:%M %p")
-    return f"<h1>Welcome to the PDP Server!</h1><p>It is currently {the_time}.</p>"
+    return f"<h1>Welcome to the PDP Server!</h1><p>It is currently {the_time}.</p> <p>Version 0.1</p><p>Build 11</p>"
 
 @app.route('/lists')
 def returnlists():
