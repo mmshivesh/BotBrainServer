@@ -1,5 +1,4 @@
 from flask import Flask, request, jsonify
-import firebase
 from datetime import datetime
 import math
 app = Flask(__name__)
