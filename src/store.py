@@ -10,8 +10,12 @@ class store:
     def pathfinder(self,start_node,end_node):
         start = self.grid.node(start_node[1], start_node[0])
         end = self.grid.node(end_node[1], end_node[0])
-        path, runs = self.finder.find_path(start, end, self.grid)
+        path, _ = self.finder.find_path(start, end, self.grid)
+		
+		# Debugging
+
         # print(path)
         # print('operations:', runs, 'path length:', len(path))
         # print(self.grid.grid_str(path=path, start=start, end=end))
+		
         return path
