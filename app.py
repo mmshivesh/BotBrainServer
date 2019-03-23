@@ -39,4 +39,4 @@ if __name__=='__main__':
 	# instance = firebase.Firebase(config)
 	# database_i = instance.database()
 	# print(database_i.child('root').get().val())	
-	app.run()
+	app.run(debug=True, use_reloader=True)
