@@ -8,7 +8,7 @@ class bot:
         cmdArray=[]
         tem_dir = self.dir
         for path in paths:
-            print(path)
+            # print(path)
             tem_pos = path[0]
             #tem_pos = (tem_pos[1],tem_pos[0])
             #print(tem_pos)
@@ -80,7 +80,7 @@ class bot:
         paths.append(store.pathfinder(tem_pos,self.billing))
         #print(paths)
         cmdArray = self.__encodeJson(paths,store)
-        print(cmdArray)
+        # print(cmdArray)
         return cmdArray
 
 
