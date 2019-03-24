@@ -53,7 +53,7 @@ def returnlists():
 		return jsonify(temp)
 
 @app.route('/products')
-def returnproducts():
+def return_products():
 	return jsonify(list(prod_map.keys()))
 
 @app.route('/botNav')
@@ -88,7 +88,7 @@ def return_path():
 		return jsonify({"ready":False,"path":""})
 
 @app.route('/endSession')
-def endSes():
+def end_session():
 	state.ready = False
 	state.response = ""
 	state.end_points = []
@@ -96,13 +96,13 @@ def endSes():
 	return jsonify("Successful")
 
 @app.route('/botCont')
-def chngbotstate():
+def change_bot_state():
 	x = state.cont
 	state.cont = False
 	return jsonify({"S":x})
 
 @app.route('/appCont')
-def chngappState():
+def change_app_state():
 	state.cont = True
 	return jsonify("Successful")
 
