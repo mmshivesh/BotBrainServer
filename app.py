@@ -74,7 +74,7 @@ def set_end_points():
 				state.ready = True
 				print(state.response)
 		else:
-			return jsonify(error)
+			return jsonify(error["error"])
 	else:
 		ready = False
 	print(end_points)
