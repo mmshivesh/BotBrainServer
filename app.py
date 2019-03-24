@@ -74,9 +74,9 @@ def set_end_points():
 				state.ready = True
 				print(state.response)
 		else:
-			return jsonify(error["error"])
+			return jsonify(error)
 	else:
-		ready = False
+		return jsonify("BOT NAV")
 	print(end_points)
 	return jsonify("Follow Bot")
 
