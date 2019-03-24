@@ -1,4 +1,4 @@
-from /src/store import store
+from src.store import store
 class bot:
     billing = [23,18]
     def __init__(self,pos,dir):
