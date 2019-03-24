@@ -2,6 +2,9 @@ from flask import Flask, request, jsonify
 import json
 from datetime import datetime
 import math
+
+from src.bot import bot
+
 app = Flask(__name__)
 
 ## Get Json objects
@@ -15,7 +18,7 @@ with open("json/database.json") as data_file:
 @app.route('/')
 def homepage():
     the_time = datetime.now().strftime("%A, %d %b %Y %l:%M %p")
-    return f"<h1>~PDP Server~</h1><p>Time: {the_time}.</p> <p>Version: 0.1</p><p>Build: 12</p>"
+    return f"<h1>~PDP Server~</h1><p>Time: {the_time}.</p> <p>Version: 0.1</p><p>Build: 15</p>"
 
 @app.route('/lists')
 def returnlists():
