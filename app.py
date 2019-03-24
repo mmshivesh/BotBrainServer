@@ -29,11 +29,14 @@ with open("json/productMapping.json") as prod_map_file:
 list_len = len(lists)
 x = store(store_dat["schema"])
 b1 = bot(bot_dat["1"]["pos"],bot_dat["1"]["dir"],store_dat["billing"])
+
+## Iniital states
+
 end_points = []
 response = ""
-ready = False
-cont = False
-state = status(end_points,response,ready,cont)
+ready_status = False
+continue_status = False
+state = status(end_points,response,ready_status,continue_status)
 
 @app.route('/')
 def homepage():
@@ -93,7 +96,7 @@ def end_session():
 	state.response = ""
 	state.end_points = []
 	state.cont = False
-	return jsonify("Successful")
+	return jsonify("Session Terminated")
 
 @app.route('/botCont')
 def change_bot_state():
@@ -104,7 +107,7 @@ def change_bot_state():
 @app.route('/appCont')
 def change_app_state():
 	state.cont = True
-	return jsonify("Successful")
+	return jsonify("Continuing")
 
 if __name__=='__main__':
 	app.run(debug=True, use_reloader=True)
