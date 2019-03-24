@@ -1,11 +1,12 @@
 from src.store import store
 class bot:
-    billing = [23,18]
-    def __init__(self,pos,dir):
+    billing=[]
+    def __init__(self,pos,dir,billing):
         self.pos = pos
         self.dir = dir
+        self.billing = billing
     def __encodeJson(self,paths,store):
-        cmdArray=[]
+        cmdArray=""
         tem_dir = self.dir
         for path in paths:
             # print(path)
@@ -20,50 +21,50 @@ class bot:
                     #print("x same")
                     if(tem_dir=='N'):
                         if(tem_pos[0]>next[0]):
-                            cmdArray.append('L')
+                            cmdArray = cmdArray+'L'
                             tem_dir = 'W'
                         elif tem_pos[0]<next[0]:
-                            cmdArray.append('R')
+                            cmdArray = cmdArray+'R'
                             tem_dir = 'E'
                     if(tem_dir=='S'):
                         if(tem_pos[0]>next[0]):
-                            cmdArray.append('R')
+                            cmdArray = cmdArray+'R'
                             tem_dir = 'W'
                         elif tem_pos[0]<next[0]:
-                            cmdArray.append('L')
+                            cmdArray = cmdArray+'L'
                             tem_dir = 'E'
                     if(tem_dir=='E'):
                         if(tem_pos[0]<next[0]):
                             if((store.matrix[tem_pos[1]+1][tem_pos[0]]==1) or ((store.matrix[tem_pos[1]-1][tem_pos[0]]==1))):
-                                cmdArray.append('S')
+                                cmdArray = cmdArray+'S'
                     if(tem_dir=='W'):
                         if(tem_pos[0]>next[0]):
                             if((store.matrix[tem_pos[1]+1][tem_pos[0]]==1) or ((store.matrix[tem_pos[1]-1][tem_pos[0]]==1))):
-                                cmdArray.append('S')
+                                cmdArray = cmdArray+'S'
                 else:
                     if(tem_dir=='N'):
                         if(tem_pos[1]>next[1]):
-                            cmdArray.append('S')
+                            cmdArray = cmdArray+'S'
                     if(tem_dir=='S'):
                         if(tem_pos[1]<next[1]):
-                            cmdArray.append('S')
+                            cmdArray = cmdArray+'S'
                     if(tem_dir=='E'):
                         if(tem_pos[1]>next[1]):
-                            cmdArray.append('L')
+                            cmdArray = cmdArray+'L'
                             tem_dir = 'N'
                         elif tem_pos[1]<next[1]:
-                            cmdArray.append('R')
+                            cmdArray = cmdArray+'R'
                             tem_dir = 'S'
                     if(tem_dir=='W'):
                         if(tem_pos[1]>next[1]):
-                            cmdArray.append('R')
+                            cmdArray = cmdArray+'R'
                             tem_dir = 'N'
                         elif tem_pos[1]<next[1]:
-                            cmdArray.append('L')
+                            cmdArray = cmdArray+'L'
                             tem_dir = 'S'
                 tem_pos = next
-            cmdArray.append('H')
-        cmdArray.append('E')
+            cmdArray = cmdArray+'H'
+        cmdArray = cmdArray[0:len(cmdArray)-2]+'E'
         return cmdArray              
     def update_dir_pos(self,dir,pos):
         self.dir = dir
@@ -84,36 +85,36 @@ class bot:
         return cmdArray
 
 
-matrix_in = [
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1],
-    [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1],
-    [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1],
-    [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1],
-    [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1],
-    [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1],
-    [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1],
-    [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1],
-    [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1],
-    [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0],
-    [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-    [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0],
-    [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0],
-    [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0],
-    [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0],
-    [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0],
-    [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0],
-    [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0],
-    [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0],
-    [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0],
-    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0],
-    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0],
-    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0],
-    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0]
-]
-start_node = [23,16]
-end_node = [6,3]
-x = store(matrix_in)
-# x.pathfinder(start_node,end_node)
-b1 = bot(start_node,'N')
-b1.command(x,[[4,3],[6,3],])
+# matrix_in = [
+#     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1],
+#     [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1],
+#     [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1],
+#     [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1],
+#     [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1],
+#     [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1],
+#     [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1],
+#     [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1],
+#     [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1],
+#     [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0],
+#     [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+#     [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0],
+#     [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0],
+#     [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0],
+#     [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0],
+#     [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0],
+#     [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0],
+#     [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0],
+#     [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0],
+#     [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+#     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0],
+#     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0],
+#     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0],
+#     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0],
+#     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0]
+# ]
+# start_node = [23,16]
+# end_node = [6,3]
+# x = store(matrix_in)
+# # x.pathfinder(start_node,end_node)
+# b1 = bot(start_node,"N",,[23,18])
+# b1.command(x,[[4,3],[6,3]])
