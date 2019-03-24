@@ -92,6 +92,18 @@ def endSes():
 	state.ready = False
 	state.response = ""
 	state.end_points = []
+	state.cont = False
+	return jsonify("Successful")
+
+@app.route('/botCont')
+def chngbotstate():
+	x = state.cont
+	state.cont = False
+	return jsonify({"S":x})
+
+@app.route('/appCont')
+def chngappState():
+	state.cont = True
 	return jsonify("Successful")
 
 if __name__=='__main__':
