@@ -26,18 +26,18 @@ class bot:
                         elif tem_pos[0]<next[0]:
                             cmdArray = cmdArray+'R'
                             tem_dir = 'E'
-                    if(tem_dir=='S'):
+                    elif(tem_dir=='S'):
                         if(tem_pos[0]>next[0]):
                             cmdArray = cmdArray+'R'
                             tem_dir = 'W'
                         elif tem_pos[0]<next[0]:
                             cmdArray = cmdArray+'L'
                             tem_dir = 'E'
-                    if(tem_dir=='E'):
+                    elif(tem_dir=='E'):
                         if(tem_pos[0]<next[0]):
                             if((store.matrix[tem_pos[1]+1][tem_pos[0]]==1) or ((store.matrix[tem_pos[1]-1][tem_pos[0]]==1))):
                                 cmdArray = cmdArray+'S'
-                    if(tem_dir=='W'):
+                    elif(tem_dir=='W'):
                         if(tem_pos[0]>next[0]):
                             if((store.matrix[tem_pos[1]+1][tem_pos[0]]==1) or ((store.matrix[tem_pos[1]-1][tem_pos[0]]==1))):
                                 cmdArray = cmdArray+'S'
@@ -45,17 +45,17 @@ class bot:
                     if(tem_dir=='N'):
                         if(tem_pos[1]>next[1]):
                             cmdArray = cmdArray+'S'
-                    if(tem_dir=='S'):
+                    elif(tem_dir=='S'):
                         if(tem_pos[1]<next[1]):
                             cmdArray = cmdArray+'S'
-                    if(tem_dir=='E'):
+                    elif(tem_dir=='E'):
                         if(tem_pos[1]>next[1]):
                             cmdArray = cmdArray+'L'
                             tem_dir = 'N'
                         elif tem_pos[1]<next[1]:
                             cmdArray = cmdArray+'R'
                             tem_dir = 'S'
-                    if(tem_dir=='W'):
+                    elif(tem_dir=='W'):
                         if(tem_pos[1]>next[1]):
                             cmdArray = cmdArray+'R'
                             tem_dir = 'N'
@@ -74,7 +74,7 @@ class bot:
         tem_pos=self.pos
         points = stop_points
         while points:
-            points=sorted(points,key=lambda x:abs(x[0]+x[1]-tem_pos[0]-tem_pos[1]))
+            points=sorted(points,key=lambda x:abs(x[0]-tem_pos[0])+abs(x[1]-tem_pos[1]))
             paths.append(store.pathfinder(tem_pos,points[0]))
             tem_pos = points[0]
             points.remove(points[0])
