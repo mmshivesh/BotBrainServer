@@ -1,10 +1,10 @@
 [	
 	{
 		"list_id":0,
-		"items": ["item1","item2","item5","item6","item9","item10"]
+		"items": ["Tomatoes","Brinjal","Chips","Water Bottle","Hair Brush","Shampoo"]
 	},
 	{
 		"list_id":1,
-		"items": ["item5","item8","item15"]
+		"items": ["Chips","Puff Corn","Papad"]
 	}
 ]
