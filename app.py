@@ -109,5 +109,15 @@ def change_app_state():
 	state.cont = True
 	return jsonify("Continuing")
 
+@app.route('/test')
+def testpath():
+	if(state.ready):
+		return jsonify({"ready":False,"path":"LHRSE"})
+	else:
+		return jsonify({"ready":False,"path":""})
+
+@app.route('/testcont')
+def testpathcont():
+	state.cont = True
 if __name__=='__main__':
 	app.run(debug=True, use_reloader=True)
