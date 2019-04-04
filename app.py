@@ -116,8 +116,13 @@ def testpath():
 	else:
 		return jsonify({"ready":False,"path":""})
 
+@app.route('/testinit')
+def chngstat():
+	state.ready = True
+	return jsonify("Done")
+
 @app.route('/testcont')
-def testpathcont():
+def testpathcont():	``
 	state.cont = True
 if __name__=='__main__':
 	app.run(debug=True, use_reloader=True)
