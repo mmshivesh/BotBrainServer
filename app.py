@@ -112,7 +112,7 @@ def change_app_state():
 @app.route('/test')
 def testpath():
 	if(state.ready):
-		return jsonify({"ready":False,"path":"LHRSE"})
+		return jsonify({"ready":False,"path":"SLHRSE"})
 	else:
 		return jsonify({"ready":False,"path":""})
 
