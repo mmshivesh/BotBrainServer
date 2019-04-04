@@ -63,7 +63,7 @@ class bot:
                             cmdArray = cmdArray+'L'
                             tem_dir = 'S'
                 tem_pos = next
-            cmdArray = cmdArray+'H'
+            cmdArray = cmdArray+'HS'
         cmdArray = cmdArray[0:len(cmdArray)-2]+'E'
         return cmdArray              
     def update_dir_pos(self,dir,pos):

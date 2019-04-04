@@ -6,7 +6,7 @@
 char *path = (char *)malloc(800);
 const char* ssid = "The_Admiral";
 const char* password = "rollsroyce";
-const char* api[] = {"http://pdp-server-2019.herokuapp.com/getPath","https://pdp-server-2019.herokuapp.com/botCont","https://pdp-server-2019.herokuapp.com/endSession"};
+const char* api[] = {"http://pdp-server-2019.herokuapp.com/test","https://pdp-server-2019.herokuapp.com/botCont","https://pdp-server-2019.herokuapp.com/endSession"};
 int s,i;
 int rm1 = D7;
 int rm2 = 10;
@@ -164,37 +164,9 @@ void copy(char *a,char *b){
   }
   a[k]=NULL;
 }
-void navigate()
-{
-  readsens();
-    if(path[i]=='R')
-    {
-      inch();
-      right();
-      delay(tdelay);
-      Stop();
-    }
 
-    else if(path[i]=='L')
-    {
-      inch();
-      left();
-      delay(tdelay);     
-      Stop();
-    }
-
-    else if(path[i]=='H')
-    {
-      s=1;
-      inch();
-      Stop();
-      // delay(5000);
-      Stop();
-    }
-
-    else if(path[i]=='S')
-    {
-        delay(1000);
+void straight(){
+   delay(1000);
         readsens();
         while(!((((l == 0)&&(c1 == 0)&&(c2 == 0)&&(c3 == 0)&&(r == 0)))))
         { 
@@ -215,7 +187,42 @@ void navigate()
             forward();
            }
          readsens();
-        }   
+        } 
+}
+
+void navigate()
+{
+  readsens();
+    if(path[i]=='R')
+    {
+      inch();
+      right();
+      delay(tdelay);
+      Stop();
+      straight();
+    }
+
+    else if(path[i]=='L')
+    {
+      inch();
+      left();
+      delay(tdelay);     
+      Stop();
+      straight();
+    }
+
+    else if(path[i]=='H')
+    {
+      s=1;
+      inch();
+      Stop();
+      // delay(5000);
+      Stop();
+    }
+
+    else if(path[i]=='S')
+    {
+         straight();
     }
     else if(path[i]=='E')
     {
@@ -277,7 +284,8 @@ void loop() {
     http.end();   //Close connection
     delay(200);
   }
-  else{
+  else if(s==4)
+  {
     navigate();
     i++;
   }
