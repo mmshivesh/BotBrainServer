@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 import json
 from datetime import datetime
 import math
+import pytz
 
 #Algo imports
 from pathfinding.core.diagonal_movement import DiagonalMovement
@@ -40,8 +41,8 @@ state = status(end_points,response,ready_status,continue_status)
 
 @app.route('/')
 def homepage():
-    the_time = datetime.now().strftime("%A, %d %b %Y %l:%M %p")
-    return f"<h1>~PDP Server~</h1><p>Time: {the_time}.</p> <p>Version: 0.1</p><p>Build: 15</p>"
+    the_time = datetime.now(pytz.timezone('Asia/Kolkata')).strftime("%A, %d %b %Y %l:%M %p")
+    return f"<h1>~PDP Server~</h1><p>Time: {the_time}.</p> <p>Version: 0.9</p><p>Build: 39</p>"
 
 @app.route('/lists')
 def returnlists():
@@ -52,8 +53,11 @@ def returnlists():
 		else:
 			return jsonify(error)
 	except:	# If there is no id
-		temp = {"no_of_lists":list_len}
-		return jsonify(temp)
+		names=[]
+		for l in lists:
+			names.append(l["list_name"])
+		print(names)
+		return jsonify(names)
 
 @app.route('/products')
 def return_products():
