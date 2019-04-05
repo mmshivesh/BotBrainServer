@@ -1,10 +1,12 @@
 [	
 	{
 		"list_id":0,
-		"items": ["Tomatoes","Brinjal","Chips","Water Bottle","Hair Brush","Shampoo"]
+		"list_name":"Hubby",
+		"items": ["Tomatoes","Facewash","Chips","Coke","Talcum"]
 	},
 	{
 		"list_id":1,
-		"items": ["Chips","Puff Corn","Papad"]
+		"list_name":"Mine",
+		"items": ["Scissors","Chocolate","Rice","Refils"]
 	}
 ]

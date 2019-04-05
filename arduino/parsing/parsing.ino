@@ -96,11 +96,11 @@ void readsens()
     // lcd.print(c3);
     // lcd.print("--");
     // lcd.print(r);
-    Serial.println(l);
-    Serial.print(c1);
-    Serial.print(c2);
-    Serial.print(c3);
-    Serial.print(r);
+    //Serial.println(l);
+    //Serial.print(c1);
+    //Serial.print(c2);
+    //Serial.print(c3);
+    //Serial.print(r);
 }
 void inch()
 {
