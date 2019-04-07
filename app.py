@@ -4,7 +4,7 @@ from datetime import datetime
 import math
 import pytz
 
-#Algo imports
+# Algo imports
 from pathfinding.core.diagonal_movement import DiagonalMovement
 from pathfinding.core.grid import Grid
 from pathfinding.finder.ida_star import IDAStarFinder
@@ -15,7 +15,7 @@ from src.status import status
 
 app = Flask(__name__)
 
-## Get Json objects
+# Get Json objects
 
 with open("json/error.json") as error_file:
 	error = json.load(error_file)
@@ -113,6 +113,8 @@ def change_app_state():
 	state.cont = True
 	return jsonify("Continuing")
 
+# testing endpoints for integration of server with the bot
+
 @app.route('/test')
 def testpath():
 	if(state.ready):
@@ -128,5 +130,6 @@ def chngstat():
 @app.route('/testcont')
 def testpathcont():
 	state.cont = True
+
 if __name__=='__main__':
 	app.run(debug=True, use_reloader=True)
