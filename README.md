@@ -3,7 +3,7 @@ Heroku based API server
 
 ## API Documentation
 
-Base URL - http://pdp-server-2019.herokuapp.com/
+Base URL - Get from Heroku after hosting. And use the following endpoints
 
 1. `/` - Show the plain server information
 2. `/lists` - Based on the query parameter of `id`, the appropriate list number is returned. If no `id` is given, this endpoint returns all the list names as an array.
