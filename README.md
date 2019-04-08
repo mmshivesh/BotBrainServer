@@ -1,4 +1,4 @@
-# PDP-server
+# BotBrain Server
 Heroku based API server
 
 ## API Documentation
